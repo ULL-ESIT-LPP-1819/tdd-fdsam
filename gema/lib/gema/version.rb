@@ -1,3 +1,3 @@
 module Gema
-  VERSION = "2.1.0"
+  VERSION = "3.1.0"
 end
