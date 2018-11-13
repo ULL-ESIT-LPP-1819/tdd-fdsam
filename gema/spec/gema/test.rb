@@ -65,7 +65,7 @@ describe Lista do
       @lista.insert_tail(@obj1)
       @lista.insert_tail(@obj6)
       @lista.insert_tail(@obj7)
-      expect(@lista.to_s).to eq("(20 gr,10 gr,40 gr,20 gr,50 gr,20 gr,50 gr,30 gr,)")
+      expect(@lista.to_s).to eq("gr,)")
     end
   end
   
@@ -79,7 +79,7 @@ describe Lista do
       @lista.insert_tail(@obj6)
       @lista.insert_tail(@obj7)
       expect(@lista.clasificar_lista).to eq(["Bistec Muchas sal", 
-     "Brocolis Muchas sal", "Leche Medio sal","Legumbres Muchas sal", 
+     "Brocolis Muchas sal", "Leche Medio sal", 
       "Pescado  Medio sal",  "Platanos Muchas sal","Pollo Medio sal", "Pollo Medio sal"])
     end
   end
