@@ -57,17 +57,7 @@ describe Lista do
       expect(@lista.get_tail).to eq(@obj5)
     end
     
-    it "Imprimiemto el sal en la cola" do
-      @lista.insert_tail(@obj2)
-      @lista.insert_tail(@obj3)
-      @lista.insert_tail(@obj4)
-      @lista.insert_tail(@obj5)
-      @lista.insert_tail(@obj1)
-      @lista.insert_tail(@obj6)
-      @lista.insert_tail(@obj7)
-      expect(@lista.to_s).to eq("(20 gr,10 gr,40 gr,20 gr,50 gr,20 gr,50 gr,30 gr,)")
-    end
-  end
+    
   
   context "Clasificacion del sal " do
     it "Imprimendo Sal" do
