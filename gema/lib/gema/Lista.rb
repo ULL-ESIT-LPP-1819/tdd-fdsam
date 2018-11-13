@@ -24,6 +24,8 @@ class Lista
     end
  
     def get_head
+        #if(@head == nil)
+         #       return false
         pointer = @head.value
         @head = @head.next_
         @head.prev = nil
@@ -31,11 +33,21 @@ class Lista
     end
     
     def get_tail
+        #if(@tail == nil)
+          #      return false
         pointer = @tail.value
         @tail = tail.prev
         @tail.next_ = nil
         return pointer
     end
+    
+     def empty
+            if  @head = @tail = nil 
+                return true
+            else
+                return false
+            end
+        end
  
     def clasificar_lista
         string = " "

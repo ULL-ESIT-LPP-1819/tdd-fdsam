@@ -57,6 +57,20 @@ describe Lista do
       expect(@lista.get_tail).to eq(@obj5)
     end
     
+    it "Comprobar nodo vacio" do
+      @lista.insert_head(nil)
+      expect(@lista.get_head).to eq(nil)
+    end
+    
+     it "Comprobar cola vacio" do
+      @lista.insert_tail(nil)
+      expect(@lista.get_tail).to eq(nil)
+    end
+    
+    it "Empty" do
+      @lista.empty
+    end
+    
     it "Imprimiemto el sal en la cola" do
       @lista.insert_tail(@obj2)
       @lista.insert_tail(@obj3)
