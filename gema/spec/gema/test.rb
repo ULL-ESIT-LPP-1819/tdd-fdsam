@@ -25,7 +25,7 @@ describe Lista do
       expect(@lista).not_to eq(nil)
     end
     
-    it "Se ha introducido bien el head_" do
+    it "Insertando por la cabezera" do
       expect(@lista.head).not_to eq(nil)
     end
     
@@ -42,10 +42,31 @@ describe Lista do
       expect(@lista.head.value.imprimirSal).to eq(@valor1)
     end
     
+     it "Insertar poe la cabezera 2" do
+      @lista.insert_head(@obj3)
+      expect(@lista.head.value.imprimirSal).to eq(@valor4)
+    end
+    
+    it "Insertar poe la cabezera 3" do
+      @lista.insert_head(@obj4)
+      expect(@lista.head.value.imprimirSal).to eq(@valor2)
+    end
+    
     it "Insertar nodo en tail " do
       @lista.insert_tail(@obj3)
       expect(@lista.tail.value.imprimirSal).to eq(@valor4)
     end
+    
+    it "Insertar nodo en tail 2" do
+      @lista.insert_tail(@obj1)
+      expect(@lista.tail.value.imprimirSal).to eq(@valor2)
+    end
+    
+    it "Insertar nodo en tail 3" do
+      @lista.insert_tail(@obj3)
+      expect(@lista.tail.value.imprimirSal).to eq(@valor4)
+    end
+    
     
     it "Extraer nodo cabezera" do
       @lista.insert_head(@obj4)
@@ -60,6 +81,11 @@ describe Lista do
     it "Comprobar nodo vacio" do
       @lista.insert_head(nil)
       expect(@lista.get_head).to eq(nil)
+    end
+    
+    it "Comprobar nodo vacio" do
+      @lista.insert_tail(nil)
+      expect(@lista.get_tail).to eq(nil)
     end
     
      it "Comprobar cola vacio" do

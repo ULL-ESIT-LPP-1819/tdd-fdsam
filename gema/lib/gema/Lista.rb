@@ -11,13 +11,19 @@ class Lista
     end
        
     def insert_head(valor)
-        dummy = Node.new(valor,@head,nil)
-        @head.prev = dummy
-        @head = dummy
+        if @head == nil
+            @head = valor 
+            @tail = valor  
+         
+        else
+            dummy = Node.new(valor,@head,nil)
+            @head.prev = dummy
+            @head = dummy
+        end
     end
     
-    
     def insert_tail(valor)
+        
         dummy = Node.new(valor,nil,@tail)
         @tail.next_ = dummy
         @tail = dummy
