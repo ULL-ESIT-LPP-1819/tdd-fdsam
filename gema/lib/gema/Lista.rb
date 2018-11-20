@@ -87,5 +87,25 @@ class Lista
         return string
     end
     
+     def clasificar_peso
+        string = " "
+        pointer = @head
+        pointer2 = ""
+        a = Array.new
+        while(pointer != nil)do
+            if(pointer.value.IMC < 18.5)
+                pointer2 = "BAJO"
+            end
+            if(pointer.value.IMC > 18.5 && pointer.value.IMC < 24.9)
+                 pointer2 = "ADECUANDO"
+            end
+             if(pointer.value.IMC >24.9)
+                pointer2 = "SOBREPESO"
+            end
+            a.push(pointer.value.IMC + " " + pointer2)
+            pointer = pointer.next_
+        end
+    a.sort
+    end
  
 end

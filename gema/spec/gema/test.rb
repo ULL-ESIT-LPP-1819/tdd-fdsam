@@ -1,5 +1,6 @@
 require "spec_helper"
 require 'benchmark'
+require "./lib/gema/Calcula.rb"
 
 describe Lista do 
 	
@@ -125,3 +126,121 @@ describe Lista do
   end
 end
  
+ 
+RSpec.describe PPL do
+    
+    before :each do                 
+        @persona1 = PPL.new("Juan",80, 2.50, 25,"Hombre", nil, nil,nil,nil)
+        @persona2 = PPL.new("Lucía", 85, 1.70, 20, "Mujer", nil, nil,nil,nil)
+        @persona3 = PPL.new("Pablo", 75, 1.20, 16, "Hombre",nil, nil,nil,nil)
+        @persona4 = PPL.new("Eduardo", 70, 1.90, 14, "Hombre",nil, nil,nil,nil)
+        @persona5 = PPL.new("Miguel", 115, 1.10, 20, "Hombre", nil, nil,nil,nil)
+        @persona7 = PPL.new("Roberto", 120, 1.80, 20, "Hombre", nil, nil,nil,nil)
+        @persona6 = PPL.new("Angel", 100, 1.70, 25, "Hombre", nil, nil,nil,nil)
+        @persona8 = PPL.new("XMAN", 111, 1.60, 21, "Hombre", nil, nil,nil,nil)
+    end
+    
+    describe "#Pruebas para un Personas obeso 1: " do
+		it "Personas" do
+		    expect(@persona1.class.superclass).to eq(Personas)
+		end
+		
+		it "Es obeso" do
+		    expect(@persona1.instance_of?PPL).to eq(true)
+		end
+		    
+		it "No es no obeso" do
+		    expect(@persona1.instance_of?PPL).not_to eq(false)
+		end
+	
+	  it "Pertenece a la clase Obeso" do
+		    expect(@persona1.class).to eq(PPL)
+		end
+    
+    end
+	
+    describe "#Pruebas para un Personas obeso 2: " do
+		it "Es un Personas" do
+		    expect(@persona2.class.superclass).to eq(Personas)
+		end
+		
+		it "Es obeso" do
+		    expect(@persona2.instance_of?PPL).to eq(true)
+		end
+		    
+		it "Not obeso" do
+		    expect(@persona2.instance_of?PPL).not_to eq(false)
+		end
+		
+		it "Pertenece a la clase Obeso" do
+		    expect(@persona2.class).to eq(PPL)
+		end
+		
+    end
+	
+	
+	describe "#Pruebas para un Personas obeso 3: " do
+		it "Es un Personas" do
+		    expect(@persona3.class.superclass).to eq(Personas)
+		end
+		
+	    it "Es obeso" do
+		    expect(@persona3.instance_of?PPL).to eq(true)
+		end
+		    
+		it "Not obeso" do
+		    expect(@persona3.instance_of?PPL).not_to eq(false)
+		end
+		
+	it "Pertenece a la clase Obeso" do
+		    expect(@persona3.class).to eq(PPL)
+		end
+    
+    end
+	
+	
+	describe "#Pruebas para un Personas obeso 4: " do
+		it "Es un Personas" do
+		    expect(@persona4.class.superclass).to eq(Personas)
+		end
+		
+		it "Es obeso" do
+		    expect(@persona4.instance_of?PPL).to eq(true)
+		end
+		    
+		it "Not obeso" do
+		    expect(@persona4.instance_of?PPL).not_to eq(false)
+		end
+		
+  it "Pertenece a la clase Obeso" do
+		    expect(@persona4.class).to eq(PPL)
+		end
+    
+    end
+	
+	
+	describe "#Pruebas para un Personas obeso 5: " do
+		it "Es un Personas" do
+		    expect(@persona5.class.superclass).to eq(Personas)
+		end
+		
+		it "Es obeso" do
+		    expect(@persona5.instance_of?PPL).to eq(true)
+		end
+		    
+		it "Not no obeso" do
+		    expect(@persona5.instance_of?PPL).not_to eq(false)
+		end
+	
+		
+		it "Pertenece a la clase Obeso" do
+		    expect(@persona5.class).to eq(PPL)
+		end
+    
+    end
+	
+
+    	
+end
+
+
