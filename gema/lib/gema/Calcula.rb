@@ -17,40 +17,11 @@ class Personas
 	@rcca = rcca
     end
 
-    def IMC			#calcula el IMC
-        @imc = peso/(talla*talla)
-        return peso/(talla*talla)
+     def <=>(other)
+        @talla <=> other.talla
     end
-
     
-    def calculaRCC
-        
-        rcc_ = rccm/rcca
-    if sexo == "Hombre"
-            
-        if rcc_ < 0.88 
-     puts "bajo"
-        else if rcc_ < 1.01
-        puts "alto"
-        else 
-        puts "muy alto"
-        end 
-end 
-            
-            else
-    	    
-    	   if rcc_ < 0.75
-        puts "bajo"
-        else if rcc_ < 0.82
-        puts "medio"
-        else 
-        puts "alto"
-    end 
-end 
-    	    
-    	end
-    	
-        return rcc_
+   
         
 end
 
@@ -91,19 +62,31 @@ end
     	return self.Grass <=> other.Grass
     end
 	
-end
-
 
 class PPL < Personas
+    
+     attr_accessor :nombre,:peso, :talla,:edad, :sexo,:imc, :estados, :rccm, :rcca  #variables de clase IMC
     
     def initialize(nombre,peso,talla,edad,sexo,imc,estados,rcc,rcca)  #constructor
         super(nombre,peso,talla,edad,sexo,imc,estados,rcc,rcca)
     end
 
-    def to_s()
-        return "Nombre :#{@nombre}, Peso: #{@peso}, Talla: #{@talla}, Edad: #{@edad}, Sexo: #{@sexo} IMC: #{@imc},  ES: #{@estados}"
-	end
+     def IMC			#calcula el IMC
+        @imc = peso/(talla*talla)
+        return @imc
+    end
     
+    
+
+    def to_s()
+        return "Nombre :#{@nombre}, Peso: #{@peso}, Talla: #{@talla}, Edad: #{@edad}, Sexo: #{@sexo} IMC: #{@imc}" 
+	end
+	
+	
+    
+     def <=>(other) #modulo comparable
+       [self.nombre, self.peso, self.talla, self.edad, self.sexo, self.imc, self.estados,self.rccm,self.rcca] <=> [other.nombre, other.peso, other.talla, other.edad, other.sexo, other.imc,other.estados,other.rccm,other.rcca]
+    end
     
 end
 

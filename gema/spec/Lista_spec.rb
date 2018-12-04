@@ -1,8 +1,7 @@
 require "spec_helper"
 require 'benchmark'
-require "./lib/gema/Calcula.rb"
 
-describe Lista do 
+RSpec.describe Lista do 
 	
    before :each do
    
@@ -19,6 +18,8 @@ describe Lista do
     @obj6 = Info_nutri.new("Brocolis",	5000,9.5,0.6,5,3.5,0.7,@valor5,4,2.7,1.6,7,2.3,5.3,7,500)
     @obj7 = Info_nutri.new("Platanos",5000,9.5,0.6,5,3.5,0.7,@valor3,4,2.7,1.6,7,2.3,5.3,7,500)
     @lista = Lista.new(@obj1)
+
+    
   end
   
   context "Creando la lista" do
@@ -135,10 +136,18 @@ RSpec.describe PPL do
         @persona3 = PPL.new("Pablo", 75, 1.20, 16, "Hombre",nil, nil,nil,nil)
         @persona4 = PPL.new("Eduardo", 70, 1.90, 14, "Hombre",nil, nil,nil,nil)
         @persona5 = PPL.new("Miguel", 115, 1.10, 20, "Hombre", nil, nil,nil,nil)
-        @persona7 = PPL.new("Roberto", 120, 1.80, 20, "Hombre", nil, nil,nil,nil)
+        @persona7 = PPL.new("Roberto", 120, 1.80, 20,"Hombre", nil, nil,nil,nil)
         @persona6 = PPL.new("Angel", 100, 1.70, 25, "Hombre", nil, nil,nil,nil)
         @persona8 = PPL.new("XMAN", 111, 1.60, 21, "Hombre", nil, nil,nil,nil)
+        @lista = Lista.new(@persona1)
+        @lista2 = Lista.new(@persona1)
+        @lista.insert_tail(@persona2)
+        @lista.insert_tail(@persona3)
+        @lista.insert_tail(@persona4)
+        @lista.insert_tail(@persona5)
     end
+    
+    
     
     describe "#Pruebas para un Personas obeso 1: " do
 		it "Personas" do
@@ -150,7 +159,7 @@ RSpec.describe PPL do
 		end
 		    
 		it "No es no obeso" do
-		    expect(@persona1.instance_of?PPL).not_to eq(false)
+		    expect(@persona1.is_a?PPL).not_to eq(false)
 		end
 	
 	  it "Pertenece a la clase Obeso" do
@@ -169,7 +178,7 @@ RSpec.describe PPL do
 		end
 		    
 		it "Not obeso" do
-		    expect(@persona2.instance_of?PPL).not_to eq(false)
+		    expect(@persona2.is_a?PPL).not_to eq(false)
 		end
 		
 		it "Pertenece a la clase Obeso" do
@@ -189,7 +198,7 @@ RSpec.describe PPL do
 		end
 		    
 		it "Not obeso" do
-		    expect(@persona3.instance_of?PPL).not_to eq(false)
+		    expect(@persona3.is_a?PPL).not_to eq(false)
 		end
 		
 	it "Pertenece a la clase Obeso" do
@@ -205,7 +214,7 @@ RSpec.describe PPL do
 		end
 		
 		it "Es obeso" do
-		    expect(@persona4.instance_of?PPL).to eq(true)
+		    expect(@persona4.is_a?PPL).to eq(true)
 		end
 		    
 		it "Not obeso" do
@@ -225,7 +234,7 @@ RSpec.describe PPL do
 		end
 		
 		it "Es obeso" do
-		    expect(@persona5.instance_of?PPL).to eq(true)
+		    expect(@persona5.is_a?PPL).to eq(true)
 		end
 		    
 		it "Not no obeso" do
@@ -239,7 +248,29 @@ RSpec.describe PPL do
     
     end
 	
-
+	 describe "#Comprobando lista de humanos" do
+    	it "Clasificacion" do
+    		expect(@lista.clasificar_peso).to eq(["Eduardo medio", "Juan delgado", "Lucía sobrepeso", "Miguel sobrepeso", "Pablo sobrepeso"])
+    	end
+    end
+    
+    
+      context "Enumerable" do
+           
+        it "Metodos each" do
+           
+            @lista2.insert_tail(@persona1)
+           
+            @lista2.insert_tail(@persona2)
+          
+            @lista2.insert_tail(@persona3)
+            val = 0
+            @lista2.each { |i| a_value >= i }
+            expect(a_value).to eq(0)
+        end
+       
+    end
+  
     	
 end
 

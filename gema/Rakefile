@@ -6,5 +6,5 @@ task :default => :spec
 
 desc "cosa"
 task :spec do
-   sh "rspec -I. spec/gema/test.rb"
+   #sh "rspec -I. spec/test.rb"
 end

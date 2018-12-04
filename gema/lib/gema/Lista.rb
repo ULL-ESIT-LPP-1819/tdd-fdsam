@@ -3,6 +3,8 @@ Node = Struct.new(:value, :next_, :prev)
 
 class Lista
     
+     include Enumerable
+    
    attr_reader :head, :tail
    
    def initialize(valor)
@@ -89,23 +91,34 @@ class Lista
     
      def clasificar_peso
         string = " "
-        pointer = @head
-        pointer2 = ""
+        aux = @head
+    
         a = Array.new
-        while(pointer != nil)do
-            if(pointer.value.IMC < 18.5)
-                pointer2 = "BAJO"
+        while(aux != nil)do
+            if(aux.value.IMC < 18.5)
+               aux.value.estados = 'delgado'
             end
-            if(pointer.value.IMC > 18.5 && pointer.value.IMC < 24.9)
-                 pointer2 = "ADECUANDO"
+            if(aux.value.IMC >= 18.5 && aux.value.IMC < 24.9)
+                 aux.value.estados = 'medio'
             end
-             if(pointer.value.IMC >24.9)
-                pointer2 = "SOBREPESO"
+             if(aux.value.IMC >24.9)
+                aux.value.estados = 'sobrepeso'
             end
-            a.push(pointer.value.IMC + " " + pointer2)
-            pointer = pointer.next_
+            a.push(aux.value.nombre + " " + aux.value.estados)
+            aux = aux.next_
         end
     a.sort
     end
+ 
+    def each
+        if @tail !=nil
+            @aux = @tail
+                while @aux != nil
+                yield @aux.value
+                @aux = @aux.next_
+            end
+         end 
+    end
+ 
  
 end
