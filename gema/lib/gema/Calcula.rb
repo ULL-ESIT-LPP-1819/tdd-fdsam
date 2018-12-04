@@ -1,6 +1,6 @@
-# clase IMC
+# clase Persona
 class Personas
-    
+    #comparable
     include Comparable
     
     attr_accessor :nombre,:peso, :talla,:edad, :sexo,:imc, :estados, :rccm, :rcca  #variables de clase IMC
@@ -62,11 +62,12 @@ end
     	return self.Grass <=> other.Grass
     end
 	
+# clase heredado de persona
 
 class PPL < Personas
     
      attr_accessor :nombre,:peso, :talla,:edad, :sexo,:imc, :estados, :rccm, :rcca  #variables de clase IMC
-    
+    # iniciando los variables
     def initialize(nombre,peso,talla,edad,sexo,imc,estados,rcc,rcca)  #constructor
         super(nombre,peso,talla,edad,sexo,imc,estados,rcc,rcca)
     end
@@ -77,13 +78,13 @@ class PPL < Personas
     end
     
     
-
+    # metodo to_s
     def to_s()
         return "Nombre :#{@nombre}, Peso: #{@peso}, Talla: #{@talla}, Edad: #{@edad}, Sexo: #{@sexo} IMC: #{@imc}" 
 	end
 	
 	
-    
+    #Comparables
      def <=>(other) #modulo comparable
        [self.nombre, self.peso, self.talla, self.edad, self.sexo, self.imc, self.estados,self.rccm,self.rcca] <=> [other.nombre, other.peso, other.talla, other.edad, other.sexo, other.imc,other.estados,other.rccm,other.rcca]
     end

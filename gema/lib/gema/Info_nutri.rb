@@ -21,11 +21,11 @@ class Info_nutri
        self.porciones = porciones
        self.gramos = gramos
     end
-    
+    #metodo calcuar julio
     def calculate_Julios
        (37*grasas + 37*grasa_saturada + 17*hidratos_carbono + 17*azucares + 17*proteina + 25*sal)*porciones*gramos
     end
-    
+    #metodo calcular caloria
     def calculate_Kcal
        (9*grasas + 9*grasa_saturada + 4*hidratos_carbono + 4*azucares + 4*proteina + 6*sal)*porciones*gramos
     end

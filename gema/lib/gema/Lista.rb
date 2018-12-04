@@ -11,7 +11,7 @@ class Lista
        @head = Node.new(valor,nil,nil)
        @tail = @head
     end
-       
+       #metodo insertar por la cabeza
     def insert_head(valor)
         if @head == nil
             @head = valor 
@@ -23,14 +23,14 @@ class Lista
             @head = dummy
         end
     end
-    
+    # metodo insertar por la cola
     def insert_tail(valor)
         
         dummy = Node.new(valor,nil,@tail)
         @tail.next_ = dummy
         @tail = dummy
     end
- 
+ #metodo obtener cabeza
     def get_head
         #if(@head == nil)
          #       return false
@@ -39,7 +39,7 @@ class Lista
         @head.prev = nil
         return pointer
     end
-    
+    #metodo obtener cola
     def get_tail
         #if(@tail == nil)
           #      return false
@@ -48,7 +48,7 @@ class Lista
         @tail.next_ = nil
         return pointer
     end
-    
+    #metodo empty
      def empty
             if  @head = @tail = nil 
                 return true
@@ -56,7 +56,7 @@ class Lista
                 return false
             end
         end
- 
+ #metodo clasificar lista
     def clasificar_lista
         string = " "
         pointer = @head
@@ -88,7 +88,7 @@ class Lista
         string += ")"
         return string
     end
-    
+    #metodo clasificar peso
      def clasificar_peso
         string = " "
         aux = @head
@@ -109,7 +109,7 @@ class Lista
         end
     a.sort
     end
- 
+ #metodo each
     def each
         if @tail !=nil
             @aux = @tail
