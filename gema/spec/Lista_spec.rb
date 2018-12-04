@@ -268,7 +268,29 @@ RSpec.describe PPL do
             @lista2.each { |i| a_value >= i }
             expect(a_value).to eq(0)
         end
-       
+        it"Max"do
+          
+            expect(@lista2.max).to eq(@persona1)
+        end
+        
+         it"Min"do
+          
+            expect(@lista2.min).to eq(@persona1)
+        end
+        
+         it "Método sort" do
+                expect(@lista2.sort).to eq([@persona1])
+    	    end
+    	    
+    	     it "Método select" do
+                expect(@lista2.select{ |i| i.peso == 80}).to eq([@persona1])
+    	    end
+    	    
+    	     it "Método collect" do
+                expect(@lista2.collect{ |i| @persona1}).to eq([@persona1])
+    	    end
+        
+        
     end
   
     	
