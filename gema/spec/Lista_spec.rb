@@ -275,7 +275,7 @@ RSpec.describe PPL do
         
          it"Min"do
           
-            expect(@lista2.min).to eq(@persona2)
+            expect(@lista2.min).to eq(@persona1)
         end
         
          it "Método sort" do
