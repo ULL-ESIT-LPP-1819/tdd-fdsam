@@ -290,6 +290,25 @@ RSpec.describe PPL do
                 expect(@lista2.collect{ |i| @persona1}).to eq([@persona1])
     	    end
         
+         it "Método <" do
+                expect(@persona1<@persona2).to eq(true)
+    	    end
+    	    
+    	     it "Método >" do
+               expect(@persona1>@persona2).to eq(false)
+    	    end
+    	    
+    	     it "Método >=" do
+               expect(@persona1>=@persona2).to eq(false)
+    	    end
+    	    
+    	       it "Método <=" do
+                expect(@persona1<=@persona2).to eq(true)
+    	    end
+    	    
+    	     it "Método between" do
+                expect(@persona1.between?(@persona2,@persona3)).to eq(false)
+    	    end
         
     end
   
