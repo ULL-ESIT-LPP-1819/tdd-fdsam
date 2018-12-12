@@ -181,8 +181,3 @@ end
 end
 
 
-#indice = IMC.new(70,1.80)
-#valor = indice.calculate
-#print "El IMC es #{valor} \n"
-
-
