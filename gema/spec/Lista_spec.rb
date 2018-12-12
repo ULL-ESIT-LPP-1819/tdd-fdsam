@@ -306,14 +306,106 @@ RSpec.describe PPL do
                 expect(@persona1<=@persona2).to eq(true)
     	    end
     	    
-    	     it "Método between" do
+    	     it "Método between " do
                 expect(@persona1.between?(@persona2,@persona3)).to eq(false)
     	    end
         
     end
-  
+    
+
   
     	
 end
 
 
+RSpec.describe PPL do
+    
+	before :each do
+    @valor1 = 10
+    @valor2 = 20
+    @valor3 = 30
+    @valor4 = 40
+    @valor5 = 50
+    @obj1 = Info_nutri.new("Pollo",	5000,9.5,0.6,5,3.5,0.7,@valor2,4,2.7,1.6,7,2.3,5.3,7,500)
+    @obj2 = Info_nutri.new("Leche",1000,5.5,0.5,2,3.5,0.7,@valor1,1.6,2.7,4.8,9,2.3,3.7,2,500)
+    @obj3 = Info_nutri.new("Bistec",1000,5.5,0.5,2,3.5,0.7,@valor4,1.6,2.7,4.8,9,2.3,3.7,2,500)
+    @obj4 = Info_nutri.new("Pescado ",5000,9.5,0.6,5,3.5,0.7,@valor2,4,2.7,1.6,7,2.3,5.3,7,500)
+    @obj5 = Info_nutri.new("Legumbres",1000,5.5,0.5,2,3.5,0.7,@valor5,1.6,2.7,4.8,9,2.3,3.7,2,500)
+    @menu1 = [@obj1,@obj3]
+    @menu2 = [@obj5, @obj4]
+    @menu3 = [@obj2, @obj4]
+    @menu4 = [@obj5, @obj1]
+    @menu5 = [@obj3,@obj2]
+    @lista_menu = [@menu1,@menu2,@menu3,@menu4,@menu5]
+    	
+    @persona1 = PPL.new("Juan",80, 2.50, 25,"Hombre", nil, nil,nil,nil)
+    @persona2 = PPL.new("Lucía", 85, 1.70, 20, "Mujer", nil, nil,nil,nil)
+    @persona3 = PPL.new("Pablo", 75, 1.20, 16, "Hombre",nil, nil,nil,nil)
+    @persona4 = PPL.new("Eduardo", 70, 1.90, 14, "Hombre",nil, nil,nil,nil)
+    @persona5 = PPL.new("Miguel", 115, 1.10, 20, "Hombre", nil, nil,nil,nil)
+    @persona1.act_fisicas(0.30)
+    @persona2.act_fisicas(0.40)
+    @persona3.act_fisicas(0.50)
+    @persona4.act_fisicas(0.60)
+    @persona5.act_fisicas(0.70)
+    @persona1.menus(@menu1)
+    @persona2.menus(@menu2)
+    @persona3.menus(@menu3)
+    @persona4.menus(@menu4)
+    @persona5.menus(@menu5)
+    @lista_persona = [@persona1,@persona2,@persona3,@persona4,@persona5]
+    
+	end
+	
+	describe "Gastos Energeticos:" do
+	    it "Actividad física" do
+	        @lista_persona.each do |elemento|
+                expect(elemento.act_fisica).not_to eq(nil)
+            end
+
+	    end
+	    it "Gasto basal" do
+            expect(@persona1.gasto_energetico).not_to eq(nil)
+            expect(@persona2.gasto_energetico).not_to eq(nil)
+            expect(@persona3.gasto_energetico).not_to eq(nil)
+            expect(@persona4.gasto_energetico).not_to eq(nil)
+            expect(@persona5.gasto_energetico).not_to eq(nil)
+	    end
+	    it "Gasto termógeno" do
+            expect(@persona1.gasto_termogeno).not_to eq(nil)
+            expect(@persona2.gasto_termogeno).not_to eq(nil)
+            expect(@persona3.gasto_termogeno).not_to eq(nil)
+            expect(@persona4.gasto_termogeno).not_to eq(nil)
+            expect(@persona5.gasto_termogeno).not_to eq(nil)
+	    end   
+	    it "Actividad física" do
+            expect(@persona1.get_actividadFisica).not_to eq(nil)
+            expect(@persona2.get_actividadFisica).not_to eq(nil)
+            expect(@persona3.get_actividadFisica).not_to eq(nil)
+            expect(@persona4.get_actividadFisica).not_to eq(nil)
+            expect(@persona5.get_actividadFisica).not_to eq(nil)
+	    end
+	    it "Gasto total" do
+            expect(@persona1.get_gastoTotal).not_to eq(nil)
+            expect(@persona2.get_gastoTotal).not_to eq(nil)
+            expect(@persona3.get_gastoTotal).not_to eq(nil)
+            expect(@persona4.get_gastoTotal).not_to eq(nil)
+            expect(@persona5.get_gastoTotal).not_to eq(nil)
+	    end
+	    it "Menus para cada personas" do
+            expect(@persona1.menu).not_to eq(nil)
+            expect(@persona2.menu).not_to eq(nil)
+            expect(@persona3.menu).not_to eq(nil)
+            expect(@persona4.menu).not_to eq(nil)
+            expect(@persona5.menu).not_to eq(nil)
+	    end
+	end
+	
+	describe "Comprobando el menus" do
+	    it "Comprobar que el menú para cada persona" do
+	        expect(@persona1.calcula_alimento).to eq("mal")
+	    end
+	   
+	end
+  
+end

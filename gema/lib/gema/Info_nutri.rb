@@ -66,7 +66,9 @@ class Info_nutri
         return @sal
     end 
     
- 
+    def <=>(other)
+        @sal <=> other.sal
+    end
     
 end
 

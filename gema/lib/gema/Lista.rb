@@ -110,14 +110,12 @@ class Lista
     a.sort
     end
  #metodo each
-    def each
-        if @tail !=nil
-            @aux = @tail
-                while @aux != nil
-                yield @aux.value
-                @aux = @aux.next_
-            end
-         end 
+  def each(&block)
+        aux = @head
+        while(aux != nil) do
+            yield aux.value
+            aux = aux.next_
+        end
     end
  
  
