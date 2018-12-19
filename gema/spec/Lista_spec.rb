@@ -321,6 +321,12 @@ end
 RSpec.describe PPL do
     
 	before :each do
+	  
+	  @arrayEtiqueta = []
+   @arrayPersona = []
+  
+    @total_menu = 0.0
+    
     @valor1 = 10
     @valor2 = 20
     @valor3 = 30
@@ -343,17 +349,33 @@ RSpec.describe PPL do
     @persona3 = PPL.new("Pablo", 75, 1.20, 16, "Hombre",nil, nil,nil,nil)
     @persona4 = PPL.new("Eduardo", 70, 1.90, 14, "Hombre",nil, nil,nil,nil)
     @persona5 = PPL.new("Miguel", 115, 1.10, 20, "Hombre", nil, nil,nil,nil)
+    @persona6 = PPL.new("Ku", 117, 1.40, 20, "Hombre", nil, nil,nil,nil)
+    @persona7 = PPL.new("Ji", 118, 1.50, 20, "Hombre", nil, nil,nil,nil)
+    @persona8 = PPL.new("Anges", 145, 1.70, 25, "Hombre", nil, nil,nil,nil)
+    @persona9 = PPL.new("Paco", 125, 1.10, 10, "Hombre", nil, nil,nil,nil)
+    @persona10 = PPL.new("Pepe", 135, 1.18, 40, "Hombre", nil, nil,nil,nil)
     @persona1.act_fisicas(0.30)
     @persona2.act_fisicas(0.40)
     @persona3.act_fisicas(0.50)
     @persona4.act_fisicas(0.60)
-    @persona5.act_fisicas(0.70)
+    @persona5.act_fisicas(0.40)
+    @persona6.act_fisicas(0.20)
+    @persona7.act_fisicas(0.90)
+    @persona8.act_fisicas(0.80)
+    @persona9.act_fisicas(0.50)
+    @persona10.act_fisicas(0.40)
+    
     @persona1.menus(@menu1)
     @persona2.menus(@menu2)
     @persona3.menus(@menu3)
     @persona4.menus(@menu4)
     @persona5.menus(@menu5)
-    @lista_persona = [@persona1,@persona2,@persona3,@persona4,@persona5]
+    @persona6.menus(@menu4)
+    @persona7.menus(@menu2)
+    @persona8.menus(@menu3)
+    @persona9.menus(@menu1)
+    @persona10.menus(@menu5)
+    @lista_persona = [@persona1,@persona2,@persona3,@persona4,@persona5,@persona6,@persona7,@persona8,@persona9,@persona10]
     
 	end
 	
@@ -407,5 +429,87 @@ RSpec.describe PPL do
 	    end
 	   
 	end
+	
+	context "Benchmark" do
+	  
+	  
+	  
+	    def for_lista! (array)
+        for i in 0..array.size 
+        min = i
+          for j in i+1..array.size-1    
+          if(array[j] > array[min])
+            aux = array[j]
+            array[j] = array[min]
+            array[min] = aux
+          end
+        end
+        
+        array
+      end
+    end
+    
+     def each_lista! (array) 
+        array.each do
+           total_menu = 0
+          array.each_with_index do |el, i|
+              min = i
+            array[1..-1].each_with_index do |el,j|
+             if array[j] > array[min]
+              aux = array[j]
+                    array[j] = array[min]
+                    array[min] = aux
+            end
+          end
+    
+      end
+    end
+  end
+  
+  it "Insertando elemento en la vector" do 
+    
+     for menu in @lista_menu
+     @total_menu = 0
+       for etiqueta in menu
+       @total_menu = etiqueta.calculate_Kcal + etiqueta.calorias + @total_menu 
+     end
+       @arrayEtiqueta.insert(0,@total_menu)
+    
+    end
+    
+  end
+  
+  #arrays = (1..1000000).map { rand }
+  
+  it "Insertando elemento en la lista" do 
+    
+     for persona in @lista_persona
+   
+      @arrayPersona.insert(0,persona.get_gastoTotal)
+    
+    end
+  end
+  
+    
+       it "Comprobación benchmark"do
+      Benchmark.bmbm do |x| 
+         
+         x.report("Con el metodo sort lista ")  { @arrayPersona.dup.sort }
+         x.report("Con el metodo for lista ") { for_lista!(@arrayPersona.dup)}
+         x.report("Con el metodo each lista") {each_lista!(@arrayPersona.dup)}
+         
+         x.report("con el metodo sort etiqueta") { @arrayEtiqueta.dup.sort}
+          x.report("con el metodo for etiqueta") {for_lista!(@arrayEtiqueta.dup)}
+           x.report("con el metodo each etiqueta") {each_lista!(@arrayEtiqueta.dup)}
+           
+            #x.report("sort!") { arrays.dup.sort! }
+            #x.report("sort")  { arrays.dup.sort  }
+      end
+    end
+  
+      
+	end
   
 end
+
+

@@ -58,9 +58,7 @@ end
     	return "Nombre :#{@nombre}, Edad: #{@edad}, Sexo: #{@sexo},  IMC: #{@imc}"
     end
 
-    def <=>(other)
-    	return self.Grass <=> other.Grass
-    end
+   
 	
 # clase heredado de persona
 
