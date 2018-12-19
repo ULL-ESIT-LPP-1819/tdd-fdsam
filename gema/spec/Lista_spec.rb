@@ -444,9 +444,9 @@ RSpec.describe PPL do
             array[min] = aux
           end
         end
-        
-        array
+     
       end
+      puts array
     end
     
      def each_lista! (array) 
@@ -464,6 +464,7 @@ RSpec.describe PPL do
     
       end
     end
+    puts array 
   end
   
   it "Insertando elemento en la vector" do 
@@ -474,10 +475,15 @@ RSpec.describe PPL do
        @total_menu = etiqueta.calculate_Kcal + etiqueta.calorias + @total_menu 
      end
        @arrayEtiqueta.insert(0,@total_menu)
-    
+
     end
-    
+          puts @arrayEtiqueta
+      puts "    "
+        puts "Lista ordenado"
+     puts each_lista!(@arrayEtiqueta)
+       puts "    "
   end
+  
   
   #arrays = (1..1000000).map { rand }
   
@@ -486,13 +492,20 @@ RSpec.describe PPL do
      for persona in @lista_persona
    
       @arrayPersona.insert(0,persona.get_gastoTotal)
-    
+        
     end
+        puts @arrayPersona
+        puts "    "
+        puts "lista ordenado"
+        puts "    "
+        
+        puts for_lista!(@arrayPersona)
   end
+  
   
     
        it "Comprobación benchmark"do
-      Benchmark.bmbm do |x| 
+      Benchmark.bm do |x| 
          
          x.report("Con el metodo sort lista ")  { @arrayPersona.dup.sort }
          x.report("Con el metodo for lista ") { for_lista!(@arrayPersona.dup)}
