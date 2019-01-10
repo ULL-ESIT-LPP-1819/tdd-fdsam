@@ -1,0 +1,5 @@
+language: ruby
+sudo: false
+before_install: cd gema
+rvm:
+    2.4.0
